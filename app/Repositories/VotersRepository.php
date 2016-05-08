@@ -43,15 +43,15 @@ class VotersRepository implements VotersRepoInterface {
 	//vote if vote present else display alreay Voted message
 	public function vote($voterid,$categoryid,$candidateid){
 		
+		//check if user vote already exist in each category
 		$checkvote=VotersRepository::checkvote($voterid,$categoryid);
 		
-		//check if user vote already exist in each category
 		if($checkvote == ''){
 			
-			//get candidate
+			//get candidates number of votes
 			$existedvote=VotersRepository::getcandidatenumofvote($candidateid);
 			
-			//add vote to candidate
+			//add vote to candidate by an increment of one
 			$addvote=Candidate::where('id',$candidateid)
 			->update(['num_of_vote'=>($existedvote+1)]);
 			
