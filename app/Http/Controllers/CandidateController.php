@@ -23,7 +23,7 @@ class CandidateController extends Controller {
 	 }
 	 
 
-	
+//	return all categories to category select option in addcandidate form in admin panel
 	public function index(){
 		
 		$categories=$this->adminaction->allcat();
@@ -35,13 +35,14 @@ class CandidateController extends Controller {
 	 *
 	 * @return Response
 	 */
-	
+	//add candidate to database
 	public function create(Request $request)
 	{
 		try{
 		$this->validate($request , ['name' => 'required|max:255','image'=>'required|mimes:png,jpg,jpeg','category' =>'required|max:2' ]);
+	 	//assign image name
 		$filename=rand(1111,5555).'.'.$request->file('image')->getClientOriginalExtension();
-		
+		//check if upload directory exists in public folder
 		if(is_dir('upload')){
 			
 		}
