@@ -1,6 +1,7 @@
 # evotting
 
 testing
-
-admin email:i@i.com
+Admin Panel Login
+admin email:admin@admin.com
 password:iiiiiiii
+
