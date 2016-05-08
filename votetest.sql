@@ -161,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `voters` (
 
 INSERT INTO `voters` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `type`) VALUES
 (1, 'Adebola Muhammed', 'olorundaolaoluwa@gmail.com', '$2y$10$fvtaVS7XSOvYA8HCbCryD.yo8gHgF9KzWeWZvNYCkSqhF5zG9AP8K', NULL, '2016-05-07 15:38:18', '2016-05-07 15:38:18', 0),
-(2, 'i', 'i@i.com', '$2y$10$LQpbyjnhMzoQ9sHly72WYOGwj1mGRf7etdMIe9E.93YRbWzUX2I9a', 'Dv7BTML09UShwih9MdxFE035DXdkRkdJOBo9lAbjVyfMQbKW5sVStOxraRCm', '2016-05-07 15:57:03', '2016-05-08 13:37:29', 1),
+(2, 'Test Vote Admin ', 'admin@admin.com', '$2y$10$LQpbyjnhMzoQ9sHly72WYOGwj1mGRf7etdMIe9E.93YRbWzUX2I9a', 'Dv7BTML09UShwih9MdxFE035DXdkRkdJOBo9lAbjVyfMQbKW5sVStOxraRCm', '2016-05-07 15:57:03', '2016-05-08 13:37:29', 1),
 (4, 'uyii', 'yy@jj.com', '$2y$10$q62s2ed.bzwHgvyHTT2P6.RJ/3oTwm1doUQoRqHZ27HcD4QS5OKk.', NULL, '2016-05-07 16:39:47', '2016-05-07 16:39:47', 0),
 (5, 'errty', 'tgf@hg.com', '$2y$10$CEcnZABcgqMXfIrV9p5F/uaNJ7eYmHXMDneGdnxPNHr7C9XGfaW7a', NULL, '2016-05-07 16:40:41', '2016-05-07 16:40:41', 0),
 (6, 'ujnik', 'hjmn@k.vv', '$2y$10$2fS4SViVZeOid9j4d4uH.ONcyFIMfmT5dKgrcPnDlq/3aDN8mODd.', NULL, '2016-05-07 16:59:54', '2016-05-07 16:59:54', 0),
