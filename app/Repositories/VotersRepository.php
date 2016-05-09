@@ -101,7 +101,7 @@ class VotersRepository implements VotersRepoInterface {
 		$catid=VotersRepository::get_single_category_id($categoryid);
 		$candid=VotersRepository::get_candidate_id($candidateid);
 		$votid=VotersRepository::getvoterid($voterid);
-		if($voterid!=$votid || $categoryid!=$catid || $candid != $candid ){
+		if($voterid!=$votid || $categoryid!=$catid || $candidateid!=$candid ){
 			return 'invalid';
 		}
 		else {
@@ -142,7 +142,7 @@ class VotersRepository implements VotersRepoInterface {
 		}
 		else {
 			
-			return 'Because Error Url Manipulation detected, Click the Category tab to Vote';
+			return 'Error Url Manipulation detected, Click the Category tab to Vote';
 		}
 	}
 		
