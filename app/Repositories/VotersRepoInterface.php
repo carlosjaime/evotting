@@ -10,5 +10,10 @@ interface VotersRepoInterface{
 	public function num_of_vote($candid);
 	public function vote($voterid,$candidateid,$categoryid);
 	public function getvotedid($voterid,$categoryid);
+	public function get_single_category_id($categoryid);
+	public function getsinglecategory($categoryid);
+	public function get_candidate_id($candidateid);
 }
+
+
 
