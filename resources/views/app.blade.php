@@ -28,7 +28,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Simple Evoting System  <small><b>@if(Auth::guest()) @elseif(Auth::user()->type==1) Admin Panel @else Voters Panel   @endif</b></small></a>
+				<a class="navbar-brand" href="#">Simple Evoting System  <small><b>@if(Auth::guest()) @elseif(Auth::user()->admin==1) Admin Panel @else Voters Panel   @endif</b></small></a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -41,7 +41,7 @@
 						<li><a href="{{ url('/auth/login') }}">Login</a></li>
 						<li><a href="{{ url('/auth/register') }}">Register</a></li>
 						<!-- check if user is an admin and display menu accordingly -->
-					@elseif(Auth::user()->type==1)
+					@elseif(Auth::user()->admin==1)
 							<li><a href="{{ url('/candidate') }}">Add Candidate</a></li>
 						<li><a href="{{ url('add/voter') }}">Add Voter</a></li>
 						<li><a href="{{ url('view/result') }}">View Result</a></li>
