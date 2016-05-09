@@ -14,46 +14,60 @@ class VotersRepository implements VotersRepoInterface {
 		$checkvote=Voted::where('user_id',$voterid)
 		->where('category_id',$categoryid)
 		->get();
-		//loop through result and return id
-		foreach($checkvote as $checkvote){
-		return $checkvote->id;			
-		}
+		return $checkvote;
 	}
 	
-	//get candidate by category
+	//get voted id from voted table
+	public function getvotedid($voterid,$categoryid){
+		
+		$checkvote=VotersRepository::checkvote($voterid,$categoryid);
+		//loop through result and return id
+		foreach($checkvote as $checkvotes){
+		return $checkvotes->id;		
+		}
+		
+	}
+	
+	//get all candidates by category
 	public function get_all_candidate_by_category($catid){
 		
 		$getcandidate=DB::table('candidates')
 		->where('category_id','=',$catid)
 		->get();
-		
-       return $getcandidate;
+	     return $getcandidate;
 	}
 	
-	//get candidate by id and return number of votes
-	public function getcandidatenumofvote($candid){
+	//get candidate by id 
+	public function getcandidatebyid($candid){
 		
 	  $candidate=Candidate::where('id',$candid)->get();
-	  foreach($candidate as $candidate){
-	  return $candidate->num_of_vote;
-		  
-	  }
+	  return $candidate;
 	}
+	
+	//get candidate number of vote
+	public function num_of_vote($candid) {
+		
+		 $candidate=VotersRepository::getcandidatebyid($candid);
+		 foreach($candidate as $candidate){
+	     return $candidate->num_of_vote;
+		  }
+	}
+	
 	
 	//vote if vote present else display alreay Voted message
 	public function vote($voterid,$categoryid,$candidateid){
 		
-		//check if user vote already exist in each category
-		$checkvote=VotersRepository::checkvote($voterid,$categoryid);
+		$checkvote=VotersRepository::getvotedid($voterid,$categoryid);
 		
+		//check if user vote already exist in each category
 		if($checkvote == ''){
 			
-			//get candidates number of votes
-			$existedvote=VotersRepository::getcandidatenumofvote($candidateid);
+			//get number of vote
+			$numberofvote=VotersRepository::num_of_vote($candidateid);
 			
-			//add vote to candidate by an increment of one
+			//add vote to candidate
 			$addvote=Candidate::where('id',$candidateid)
-			->update(['num_of_vote'=>($existedvote+1)]);
+			->update(['num_of_vote'=>($numberofvote+1)]);
 			
 			//save imformation to Voted for future confirmation that user has already voted
 			Voted::create(['user_id'=>$voterid,'category_id'=>$categoryid]);
