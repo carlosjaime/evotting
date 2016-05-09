@@ -80,7 +80,7 @@
 	@foreach($candidates as $voted)
 		<div class="col-md-4">
 		<b><p class="text-center">{{$voted->candname}}</p></b><br>
-        <img src="{{url ('upload/') }}/{{$voted->image}}" class="img-responsive img-thumbnail"></img><br><br>
+        <img src="{{url ('upload/') }}/{{$voted->image}}" class="img-responsive img-thumbnail" style="height:200px; width:560px;" ></img><br><br>
 		<a class="btn btn-primary btn-md center-block" href="{{ url('votecand/' )}}/{{$voted->candid}}/{{$voted->candcatid}}/{{Auth::user()->id}} "> Vote </a>
 		</div>
 		@endforeach
