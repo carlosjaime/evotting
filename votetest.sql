@@ -150,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `voters` (
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `type` int(1) NOT NULL DEFAULT '0',
+  `admin` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
@@ -159,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `voters` (
 -- Dumping data for table `voters`
 --
 
-INSERT INTO `voters` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `type`) VALUES
+INSERT INTO `voters` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `admin`) VALUES
 (1, 'Adebola Muhammed', 'olorundaolaoluwa@gmail.com', '$2y$10$fvtaVS7XSOvYA8HCbCryD.yo8gHgF9KzWeWZvNYCkSqhF5zG9AP8K', NULL, '2016-05-07 15:38:18', '2016-05-07 15:38:18', 0),
 (2, 'Test Vote Admin ', 'admin@admin.com', '$2y$10$LQpbyjnhMzoQ9sHly72WYOGwj1mGRf7etdMIe9E.93YRbWzUX2I9a', 'Dv7BTML09UShwih9MdxFE035DXdkRkdJOBo9lAbjVyfMQbKW5sVStOxraRCm', '2016-05-07 15:57:03', '2016-05-08 13:37:29', 1),
 (4, 'uyii', 'yy@jj.com', '$2y$10$q62s2ed.bzwHgvyHTT2P6.RJ/3oTwm1doUQoRqHZ27HcD4QS5OKk.', NULL, '2016-05-07 16:39:47', '2016-05-07 16:39:47', 0),
