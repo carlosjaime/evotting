@@ -3,6 +3,8 @@
 	namespace App\Repositories;
 	use App\Voted;
 	use App\Candidate;
+	use App\Category;
+	use App\User;
 	use DB;
 	use App\Repositories\VotersRepoInterface;
 
@@ -28,7 +30,7 @@ class VotersRepository implements VotersRepoInterface {
 		
 	}
 	
-	//get all candidates by category
+	//get candidates by category
 	public function get_all_candidate_by_category($catid){
 		
 		$getcandidate=DB::table('candidates')
@@ -53,10 +55,68 @@ class VotersRepository implements VotersRepoInterface {
 		  }
 	}
 	
+	//get candidate id
+	public function get_candidate_id($candidateid){
+		$candid=VotersRepository::getcandidatebyid($candidateid);
+		foreach($candid as $id){
+			return $id->id;
+		}
+		
+	}
+	
+	//get category by id
+	public function getsinglecategory($categoryid){
+		
+		$category=Category::where('id',$categoryid)->get();
+		return $category;	
+	}
+	
+	//get category by id and return category id
+	public function get_single_category_id($categoryid){
+		$categoryid=VotersRepository::getsinglecategory($categoryid);
+		foreach($categoryid as $id){
+			
+			return $id->id;
+		}
+	}
+	
+	//get  voter detail by id
+	public function getvoterbyid($voterid){
+		
+		$voterdetail=User::where('id',$voterid)->get();;
+		return $voterdetail;
+	}
+	
+	//get voter id
+	public function getvoterid($voterid){
+		$votersid=VotersRepository::getvoterbyid($voterid);
+		foreach ($votersid as $id){
+			return $id->id;
+		}
+		
+	}
+	//check the integrity of url value
+	public function checkintegrity($voterid,$categoryid,$candidateid){
+		
+		$catid=VotersRepository::get_single_category_id($categoryid);
+		$candid=VotersRepository::get_candidate_id($candidateid);
+		$votid=VotersRepository::getvoterid($voterid);
+		if($voterid!=$votid || $categoryid!=$catid || $candid != $candid ){
+			return 'invalid';
+		}
+		else {
+			return 'valid';
+		}
+		
+	}
+	
 	
 	//vote if vote present else display alreay Voted message
 	public function vote($voterid,$categoryid,$candidateid){
 		
+		$checkintegrity=VotersRepository::checkintegrity($voterid,$categoryid,$candidateid);
+		
+		if($checkintegrity=='valid') {
 		$checkvote=VotersRepository::getvotedid($voterid,$categoryid);
 		
 		//check if user vote already exist in each category
@@ -79,7 +139,11 @@ class VotersRepository implements VotersRepoInterface {
 			return 'You Have Already Voted in this category';
 		}
 		
-	
+		}
+		else {
+			
+			return 'Because Error Url Manipulation detected, Click the Category tab to Vote';
+		}
 	}
 		
 }
