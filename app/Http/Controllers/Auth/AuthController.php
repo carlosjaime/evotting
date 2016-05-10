@@ -27,7 +27,7 @@ class AuthController extends Controller {
 	 * @param  \Illuminate\Contracts\Auth\Registrar  $registrar
 	 * @return void
 	 */
-              protected $username='username';
+            //  protected $username='username';
             
 
 	public function __construct(Guard $auth, Registrar $registrar)
